@@ -1,0 +1,208 @@
+# Defines the Artwork class 
+class Artwork:
+    def __init__(self, title, artist, dateOfCreation, historicalSignificance, exhibitionLocation):
+        self.title = title
+        self.artist = artist
+        self.dateOfCreation = dateOfCreation
+        self.historicalSignificance = historicalSignificance
+        self.exhibitionLocation = exhibitionLocation
+
+    # Getter methods for Artwork attributes
+    def get_title(self):
+        return self.title
+
+    def get_artist(self):
+        return self.artist
+
+    def get_date_of_creation(self):
+        return self.dateOfCreation
+
+    def get_historical_significance(self):
+        return self.historicalSignificance
+
+    def get_exhibition_location(self):
+        return self.exhibitionLocation
+
+    # Setter methods for Artwork attributes
+    def set_title(self, title):
+        self.title = title
+
+    def set_artist(self, artist):
+        self.artist = artist
+
+    def set_date_of_creation(self, dateOfCreation):
+        self.dateOfCreation = dateOfCreation
+
+    def set_historical_significance(self, historicalSignificance):
+        self.historicalSignificance = historicalSignificance
+
+    def set_exhibition_location(self, exhibitionLocation):
+        self.exhibitionLocation = exhibitionLocation
+
+# Defines the Exhibition class
+class Exhibition:
+    def __init__(self, name, startDate, endDate, location):
+        self.name = name
+        self.startDate = startDate
+        self.endDate = endDate
+        self.location = location
+        self.artworks = []
+
+    def add_artwork(self, artwork):
+        self.artworks.append(artwork)
+
+    # Getter and setter methods for Exhibition attributes
+    def get_name(self):
+        return self.name
+
+    def set_name(self, name):
+        self.name = name
+
+    def get_start_date(self):
+        return self.startDate
+
+    def set_start_date(self, startDate):
+        self.startDate = startDate
+
+    def get_end_date(self):
+        return self.endDate
+
+    def set_end_date(self, endDate):
+        self.endDate = endDate
+
+    def get_location(self):
+        return self.location
+
+    def set_location(self, location):
+        self.location = location
+
+# Defines the Visitor class 
+class Visitor:
+    def __init__(self, fullName, email, age, idNumber):
+        self.fullName = fullName
+        self.email = email
+        self.age = age
+        self.idNumber = idNumber
+
+    # Getter and setter methods for Visitor attributes
+    def get_full_name(self):
+        return self.fullName
+
+    def set_full_name(self, fullName):
+        self.fullName = fullName
+
+    def get_email(self):
+        return self.email
+
+    def set_email(self, email):
+        self.email = email
+
+    def get_age(self):
+        return self.age
+
+    def set_age(self, age):
+        self.age = age
+
+    def get_id_number(self):
+        return self.idNumber
+
+    def set_id_number(self, idNumber):
+        self.idNumber = idNumber
+
+# Defines the Ticket class
+class Ticket:
+    def __init__(self, idTicketNumber, purchaseDate, eventDate, ticketPrice):
+        self.idTicketNumber = idTicketNumber
+        self.purchaseDate = purchaseDate
+        self.eventDate = eventDate
+        self.ticketPrice = ticketPrice
+
+    # Getter and setter methods for Ticket attributes
+    def get_id_ticket_number(self):
+        return self.idTicketNumber
+
+    def set_id_ticket_number(self, idTicketNumber):
+        self.idTicketNumber = idTicketNumber
+
+    def get_purchase_date(self):
+        return self.purchaseDate
+
+    def set_purchase_date(self, purchaseDate):
+        self.purchaseDate = purchaseDate
+
+    def get_event_date(self):
+        return self.eventDate
+
+    def set_event_date(self, eventDate):
+        self.eventDate = eventDate
+
+    def get_ticket_price(self):
+        return self.ticketPrice
+
+    def set_ticket_price(self, ticketPrice):
+        self.ticketPrice = ticketPrice
+
+class EventTicket(Ticket):
+    def __init__(self, idTicketNumber, purchaseDate, eventDate, ticketPrice, typeOfEvent):
+        super().__init__(idTicketNumber, purchaseDate, eventDate, ticketPrice)
+        self.typeOfEvent = typeOfEvent
+
+    # Getter and setter for EventTicket subclass
+    def get_type_of_event(self):
+        return self.typeOfEvent
+
+    def set_type_of_event(self, typeOfEvent):
+        self.typeOfEvent = typeOfEvent
+
+class ExhibitionTicket(Ticket):
+    def __init__(self, idTicketNumber, purchaseDate, eventDate, ticketPrice, exhibitionName):
+        super().__init__(idTicketNumber, purchaseDate, eventDate, ticketPrice)
+        self.exhibitionName = exhibitionName
+
+
+# Test Case
+
+def displayAdding_newArt():
+    artwork = Artwork("A Girl Blowing on a Brazier", "Georges de La Tour", "1646–1648", "One of only 48 pieces of art that are credited to the creator, making it a significant addition to the permanent collection of the Louvre Abu Dhabi.", "Louvre Abu Dhabi")
+    print(f"The new artwork: Title ='{artwork.title}', "
+          f"Name of the artist ='{artwork.artist}', "
+          f"Date of the artwork Creation ='{artwork.dateOfCreation}', "
+          f"Historical significance ='{artwork.historicalSignificance}', "
+          f"Location ='{artwork.exhibitionLocation}'")
+
+def displayOpening_newExhibition():
+    exhibition = Exhibition("From Kalila wa Dimna to La Fontaine(Travelling through Fables)", "2024-03-26", "2024-07-21", "Gallery 2")
+    print(f"The new exhibition: Name ='{exhibition.name}', "
+          f"Starting date ='{exhibition.startDate}', "
+          f"Ending date ='{exhibition.endDate}', "
+          f"It's location ='{exhibition.location}'")
+
+def display_purchaseingTicket():
+    visitor = Visitor("Maryam Ahmed Almansoori", "MaryamAlmansoori3@gmail.com", 19, "784-2004-543264-6")
+    ticket = EventTicket("A3742", "2024-03-28", "2024-04-6", 63.0, "Ramadan at the museum")
+    print(f"Ticket purchased: Visitor name ='{visitor.fullName}', "
+          f"Visitor personal email ='{visitor.email}', "
+          f"Visitor age ='{visitor.age}', "
+          f"Visitor national ID number ='{visitor.idNumber}', "
+          f"Visitor ticket ID ='{ticket.idTicketNumber}', "
+          f"Purchase date ='{ticket.purchaseDate}', "
+          f"Event date ='{ticket.eventDate}', "
+          f"Ticket price ='{ticket.ticketPrice}', "
+          f"Type of the event ='{ticket.typeOfEvent}'")
+
+def displayPaymentReceipt():
+    ticket = ExhibitionTicket("A3742","2024-03-28", "2024-04-6", 63.0, "Ramadan at the museum")
+    finalPrice = ticket.ticketPrice + (ticket.ticketPrice * 0.05)  # Adding 5% VAT
+    print(f"The payment receipt: Ticket ID ='{ticket.idTicketNumber}', "
+          f"Exhibition name ='{ticket.exhibitionName}', "
+          f"Purchase date ='{ticket.purchaseDate}', "
+          f"Event date ='{ticket.eventDate}', "
+          f"Original price ='{ticket.ticketPrice}', "
+          f"Final price include VAT ='{finalPrice}'")
+
+# Basic main function to carrry out tests if it's true
+if __name__ == "__main__":
+    displayAdding_newArt()
+    displayOpening_newExhibition()
+    display_purchaseingTicket()
+    displayPaymentReceipt()
